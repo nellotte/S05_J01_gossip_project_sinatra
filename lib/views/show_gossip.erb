@@ -1,12 +1,14 @@
 <html>
   <head>
-    <title>show_gossip</title>
+    <title>Page Potin</title>
 
   </head>
   <body>
     <h1>Ceci est la page du potin  numéro <%= gossip[0] %><br/></h1>
     <p>Ce potin a été écrit par :  <%= gossip[1] %><br/></p>
     <p>Contenu du potin :  <%= gossip[2] %><br/></p>
+       <a href="/">Retour à l'index des potins</a>
+       <a href="/<%= gossip[0] %>/edit ">Editer le Potin</a>
   
     
 

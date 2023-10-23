@@ -33,5 +33,23 @@ class Gossip
     end
   end
 
-end
+  def update(id, new_author, new_content)
+    # Lisez d'abord tous les gossips à partir du fichier CSV
+    all_gossips = CSV.read("./db/gossip.csv")
+
+    # Vérifiez si l'ID est dans la plage valide
+    if id.to_i >= 0 && id.to_i < all_gossips.length
+      # Mise à jour les champs du gossip avec les nouvelles valeurs
+      all_gossips[id][0] = new_author
+      all_gossips[id][1] = new_content
+
+    #mises à jour dans le fichier CSV
+      CSV.open("./db/gossip.csv", "w") do |csv|
+        all_gossips.each do |gossip|
+          csv << gossip
+        end
+      end
+    end
+  end
+end 
 
