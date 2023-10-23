@@ -22,5 +22,16 @@ class Gossip
     return all_gossips
   end
 
+  def self.find(id)
+    # Retournez le gossip trouvé
+    data =  all() #on créé la variable data qu contient tous les gossips
+    if id.to_i < 0 || id.to_i + 1 > data.length #si on met un chiffre inf à 0 ou supérieur au nombre de gossip disponible
+      #on renvoit un tableau vide. Le tableau est composé de 3 éléments (id, author et content)
+      return [nil, nil, nil]
+    else #si l'id correspond à un gossip existant, on retourne un tableau avec les 3 élément du gossip en question
+      return [id, data[id.to_i].author, data[id.to_i].content] #dans data, on remonte l'auteur du gossip[x] et le content du gossip [X]
+    end
+  end
+
 end
 

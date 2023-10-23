@@ -13,8 +13,17 @@ class ApplicationController < Sinatra::Base
     redirect '/'
   end
   
-  
+  get '/gossips/:id' do
+     # Récupérer l'ID du gossip depuis les paramètres de route
+    gossip = Gossip.find(params['id']) 
+    if !gossip[0]   && !gossip[1]  && !gossip[2] #si les éléments de gossip !est different de vide
+      redirect '/'
+    else 
+      erb :show_gossip, locals: {gossip: Gossip.find(params['id'])}
+    end
+  end
 
+  
   
 
 end
