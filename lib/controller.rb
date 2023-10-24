@@ -23,14 +23,14 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  get '/:id/edit' do #nouvelle route pour l'affichage du formulaire
+  get '/gossips/:id/edit' do #nouvelle route pour l'affichage du formulaire
     id = params['id'].to_i
     gossip = Gossip.find(id)
     erb :edit, locals: { gossip: gossip, id: id }
   end
 
   #nouvelle route pour la soumission du formulaire
-  post '/:id/edit' do
+  post '/gossips/:id/edit' do
     gossip = Gossip.find(params['id'].to_i)
     gossip.update(params["new_author"], params["new_content"]) 
     redirect "/gossips/#{gossip.id}"
